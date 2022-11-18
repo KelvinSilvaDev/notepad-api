@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import db from "./config/dbConnect.js";
 import routes from "./routes/index.js";
 
@@ -9,6 +10,7 @@ db.once("open", function () {
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use((req, res, next) => {
   console.log("Request received");
   res.header("Access-Control-Allow-Origin", "*");
