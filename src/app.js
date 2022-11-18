@@ -9,10 +9,11 @@ db.once("open", function () {
 
 const app = express();
 app.use(express.json());
-app.use((req, res) => {
+app.use((req, res, next) => {
   console.log("Request received");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  next();
 });
 routes(app);
 
